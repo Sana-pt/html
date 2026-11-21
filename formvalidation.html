@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form page</title>
+<style>
+body
+{ 
+  background-color:lightyellow;
+  text-align:center;
+}
+
+</style>
+</head>
+<body>
+<h2 style="color:green"><center><u>STUDENT REGISTRATION FORM</u></center></h2>
+<form method="POST" onsubmit="return validateForm()">
+
+<label>Name:</label>
+<input type="text"name="name"id="name">
+<br><br>
+
+<label>Email:</label>
+<input type="email"name="email"id="email">
+<br><br>
+
+<label>Password:</label>
+<input type="password"name="password"id="password">
+<br><br>
+
+<label>Age:</label>
+<input type="number"name="age"id="age">
+<br><br>
+
+<label>Gender:</label><br>
+<input type="radio" name="gender" value="Male">Male<br>
+<input type="radio" name="gender" value="Female">Female
+<br><br>
+
+<label>Course:</label>
+<select name="course"id="course">
+    <option value="">Select Course</option>
+    <option value="MCA">MCA</option>
+    <option value="MBA">MBA</option>
+    <option value="M.Tech">M.Tech</option>
+    <option value="BCA">BCA</option>
+</select>
+<br><br>
+
+   <label>Hobbies:</label>
+        <input type="checkbox" name="hobbies" value="Reading"> Reading
+        <input type="checkbox" name="hobbies" value="Sports"> Sports
+        <input type="checkbox" name="hobbies" value="Music"> Music
+        <br><br>
+
+
+<label>Address:</label>
+<br>
+<textarea name="address" rows="4" cols="30" id="address"></textarea>
+<br><br>
+
+<label>DOB:</label>
+<input type="Date" name="dob" id="dob">
+<br><br>
+
+<input type="submit" value="Register" style="color:white;background-color:blue">
+<input type="reset" value="Clear"  style="color:white;background-color:red">
+
+</form>
+
+ <script>
+
+    function validateForm()
+    {
+        var name=document.getElementById("name").value;
+        var email=document.getElementById("email").value;
+        var password=document.getElementById("password").value;
+        var age=document.getElementById("age").value;
+        var course=document.getElementById("course").value;
+        var address=document.getElementById("address").value;
+        var DOB=document.getElementById("dob").value;
+
+        var Hobbies=document.getElementsByName("hobbies");
+        var gender=document.getElementsByName("gender");
+
+        var msg="";
+        var selected=false;
+        var genderselected=false;
+
+        if(name=="")
+        {
+            msg+="Enter your name\n";
+        }
+
+        if(email=="")
+        {
+            msg+="Enter your email\n";
+        }
+
+        if(password=="")
+        {
+            msg+="Enter password\n";
+        }
+
+        if(age=="")
+        {
+            msg+="Enter age\n";
+        }
+
+        if(course=="")
+        {
+            msg+="Select a course\n";
+        }
+
+        if(address=="")
+        {
+            msg+="Enter address\n";
+        }
+
+        if(DOB=="")
+        {
+            msg+="Enter DOB\n";
+        }
+
+        for(var i=0;i<gender.length;i++)
+        {
+            if(gender[i].checked)
+            {
+                genderselected=true;
+            }
+        }
+
+        if(genderselected==false)
+        {
+            msg+="Select a gender\n";
+        }
+
+        for(var i=0;i<Hobbies.length;i++)
+        {
+            if(Hobbies[i].checked)
+            {
+                selected=true;
+            }
+        }
+
+        if(selected==false)
+        {
+            msg+="Select a hobby\n";
+        }
+
+        if(msg!="")
+        {
+            alert(msg);
+            return false;
+        }
+        else
+        {
+            alert("Successfully Registered");
+            return true;
+        }
+
+    }
+
+    </script>
+
+
+</body>
+</html>
+
